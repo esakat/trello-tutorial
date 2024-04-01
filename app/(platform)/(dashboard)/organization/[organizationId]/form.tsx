@@ -1,6 +1,7 @@
 "use client";
 
 import { createBoard } from "@/actions/create-board";
+//www.youtube.com/watch?si=c2mi1A3-A_pobL4z&v=pRybm9lXW2c&feature=youtu.be
 
 import { useAction } from "@/hooks/use-action";
 import { FormInput } from "@/components/form/form-input";

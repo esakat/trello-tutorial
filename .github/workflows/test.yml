@@ -19,7 +19,7 @@ jobs:
   job-0:
     runs-on: ubuntu-20.04
     outputs:
-      output1: ${{steps.step_one.ouputs.test}}
+      output1: ${{steps.step_one.outputs.test}}
     steps:
       - uses: actions/checkout@v3
       - name: Set the value

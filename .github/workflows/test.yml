@@ -35,14 +35,25 @@ jobs:
       - name: Use the value
         id: step_two
         run: |
-          echo "${{ jobs.job-0.outputs.output1 }}"
+          echo "${{ needs.job-0.outputs.output1 }}"
 
   job-2:
-    needs: job-1
+    needs: [job-0, job-1]
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - name: Use the value
         id: step_two
         run: |
-          echo "${{ jobs.job-0.outputs.output1 }}"
+          echo "${{ needs.job-0.outputs.output1 }}"
+
+
+  job-x:
+    needs: [job-0, job-2]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ needs.job-0.outputs.output1 }}"

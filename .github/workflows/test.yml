@@ -35,7 +35,7 @@ jobs:
       - name: Use the value
         id: step_two
         run: |
-          echo "${{ needs.job-0.outputs.output1 }}"
+          echo "${{ jobs.job-0.outputs.output1 }}"
 
   job-2:
     needs: job-1
@@ -45,4 +45,4 @@ jobs:
       - name: Use the value
         id: step_two
         run: |
-          echo "${{ needs.job-0.outputs.output1 }}"
+          echo "${{ jobs.job-0.outputs.output1 }}"

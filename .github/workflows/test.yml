@@ -18,12 +18,14 @@ jobs:
 
   job-0:
     runs-on: ubuntu-20.04
+    outputs:
+      test: ${{steps.step_one.ouputs.test}}
     steps:
       - uses: actions/checkout@v3
       - name: Set the value
         id: step_one
         run: |
-          echo "action_state=yellow" >> $GITHUB_ENV
+          echo "test=yellow" >> $GITHUB_OUTPUT
   
   job-1:
     needs: job-0 
@@ -33,4 +35,14 @@ jobs:
       - name: Use the value
         id: step_two
         run: |
-          echo "${{ env.action_state }}"
+          echo "${{ needs.job0.outputs.test }}"
+
+  job-2:
+    needs: job-1
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ needs.job0.outputs.test }}"
